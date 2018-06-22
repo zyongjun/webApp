@@ -3,10 +3,8 @@ package com.joe.base
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import com.joe.base.extension.loge
 
 open  class BaseActivity:AppCompatActivity(){
 
@@ -14,9 +12,8 @@ open  class BaseActivity:AppCompatActivity(){
         return  R.layout.activity_fragment_container
     }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        loge("--------------------------------------------------")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         var fragment:Fragment? = null
         if (intent != null && intent.getStringExtra(Navigator.KEY_FRAGMENT_NAME) != null) {
             val fragmentName = intent.getStringExtra(Navigator.KEY_FRAGMENT_NAME)

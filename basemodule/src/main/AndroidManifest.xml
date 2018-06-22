@@ -2,7 +2,7 @@
     package="com.joe.base" >
 
     <application>
-        <activity android:name=".CommonActivity"/>
-        <activity android:name=".FullScreenActivity"/>
+        <activity android:name="com.joe.base.CommonActivity"/>
+        <activity android:name="com.joe.base.FullScreenActivity"/>
     </application>
 </manifest>
