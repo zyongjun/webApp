@@ -22,5 +22,8 @@ class MainFragment: BaseFragment() {
         tvTestStageAndroid.setOnClickListener {
             Navigator.startCommon(it.context,TestStageAndroidFragment::class.java.name,Bundle())
         }
+        tvCanvas.setOnClickListener {
+            Navigator.startCommon(it.context,CanvasFragment::class.java.name,Bundle())
+        }
     }
 }

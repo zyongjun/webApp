@@ -10,30 +10,14 @@
     <include android:id="@+id/appBar"
         layout="@layout/app_actionbar" />
     <TextView
-        android:id="@+id/tvTestStageAndroid"
+        android:id="@+id/tvAnimator"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Android进阶之光"
+        android:layout_height="60dp"
+        android:text="hello"
         android:gravity="center_vertical"
         android:paddingLeft="15dp"
-        android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar" />
-
-    <TextView
-        android:id="@+id/tvCanvas"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Canvas"
-        android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        android:layout_marginTop="5dp"
-        android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTestStageAndroid" />
 
 </android.support.constraint.ConstraintLayout>
