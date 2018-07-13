@@ -25,5 +25,6 @@ class MainFragment: BaseFragment() {
         tvCanvas.setOnClickListener {
             Navigator.startCommon(it.context,CanvasFragment::class.java.name,Bundle())
         }
+
     }
 }
