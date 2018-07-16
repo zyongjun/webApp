@@ -26,5 +26,9 @@ class MainFragment: BaseFragment() {
             Navigator.startCommon(it.context,CanvasFragment::class.java.name,Bundle())
         }
 
+        tvScroll.setOnClickListener {
+            Navigator.startCommon(it.context,SpringScrollFragment::class.java.name,Bundle())
+        }
+
     }
 }

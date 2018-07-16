@@ -36,4 +36,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTestStageAndroid" />
 
+    <TextView
+        android:id="@+id/tvScroll"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="spring scroll"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCanvas" />
+
 </android.support.constraint.ConstraintLayout>
