@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.Window
+import android.view.WindowManager
 
 open  class BaseActivity:AppCompatActivity(){
 
@@ -14,16 +16,26 @@ open  class BaseActivity:AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setBackgroundDrawable(null)
         var fragment:Fragment? = null
         if (intent != null && intent.getStringExtra(Navigator.KEY_FRAGMENT_NAME) != null) {
             val fragmentName = intent.getStringExtra(Navigator.KEY_FRAGMENT_NAME)
             val bundle = intent.getBundleExtra(Navigator.KEY_FRAGMENT_ARGS)
             fragment = Fragment.instantiate(this,fragmentName,bundle)
         }
+        if (isFullScreen()) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
         setContentView(getLayoutId())
         if (fragment != null) {
             replaceFragment(fragment)
         }
+    }
+
+    open  fun isFullScreen():Boolean{
+        return  false
     }
 
     fun replaceFragment(fragment: Fragment) {

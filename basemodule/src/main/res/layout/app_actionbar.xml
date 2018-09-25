@@ -24,6 +24,7 @@
         app:layout_constraintLeft_toRightOf="@+id/ivBack"
         app:layout_constraintRight_toLeftOf="@+id/tvRight"
         app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@android:color/white"
         tools:text="title" />
 
     <TextView

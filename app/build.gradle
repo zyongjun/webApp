@@ -15,10 +15,42 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        acs {
+            storeFile file('acstoken.jks')
+            storePassword 'acstokens'
+            keyAlias 'acstoken'
+            keyPassword 'acstokens'
+        }
+        xbank {
+            storeFile file('xbank.jks')
+            storePassword 'xbanks'
+            keyAlias 'xbank'
+            keyPassword 'xbanks'
+        }
+
+    }
+
     buildTypes {
-        release {
+        acstoken{
+            resValue("string", "web_host", "\"${WEB_URL_ACS}\"")
+            signingConfig signingConfigs.acs
+            matchingFallbacks = ['release', 'debug']
+        }
+        xbank {
+            resValue("string", "web_host", "\"${WEB_URL_XBANK}\"")
             minifyEnabled false
+            signingConfig signingConfigs.xbank
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            matchingFallbacks = ['release', 'debug']
         }
     }
 }

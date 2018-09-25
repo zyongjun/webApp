@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 open  class BaseFragment:Fragment(){
-    var mRootView:View? = null
+    open var mRootView:View? = null
     final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (mRootView == null) {
             mRootView = inflater.inflate(getLayoutId(),container,false)
@@ -16,6 +16,11 @@ open  class BaseFragment:Fragment(){
             parent?.removeAllViews()
         }
         return mRootView
+    }
+
+    open fun Fragment.onBackPressed():Boolean{
+        activity?.finish()
+        return true
     }
 
     open fun getLayoutId():Int{
