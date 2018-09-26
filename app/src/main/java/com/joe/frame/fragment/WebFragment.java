@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.ValueCallback;
@@ -21,12 +22,13 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.joe.base.Navigator;
+import com.joe.frame.BuildConfig;
 import com.joe.frame.R;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-
+//https://github.com/DRPrincess/DR_WebviewDemo/blob/master/app/src/main/java/com/dr_webviewdemo/WebActivity.java
 public class WebFragment extends BasePermissionFragment {
     private WebView mWebView;
     private static final int REQUEST_FILE_CHOOSER = 300;
@@ -179,8 +181,19 @@ public class WebFragment extends BasePermissionFragment {
         cameraDataDir.mkdirs();
         String cameraFilePath = cameraDataDir.getAbsolutePath() + File.separator +
                 System.currentTimeMillis() + ".jpg";
+        File tempFile = new File(cameraFilePath);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            cameraIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri uri = FileProvider.getUriForFile(getActivity(), BuildConfig.APPLICATION_ID + ".fileProvider", tempFile);
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        } else {
+            Uri uri = Uri.fromFile(tempFile);
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+
+
         mCameraFilePath = cameraFilePath;
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(cameraFilePath)));
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
         return cameraIntent;
     }
 
