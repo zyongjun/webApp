@@ -6,4 +6,8 @@
     <color name="app_bg">#99999999</color>
     <color name="c_status">#999999</color>
     <color name="appbg">#2f3640</color>
+    <color name="white">#ffffff</color>
+    <color name="color_transparent">#00000000</color>
+    <color name="black">#222222</color>
+    <color name="session_content_hint_color">#e5e5e5</color>
 </resources>

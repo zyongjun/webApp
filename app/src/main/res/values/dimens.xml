@@ -1,4 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="s_14">14sp</dimen>
+    <dimen name="single_choice_dialog_padding_top">15dp</dimen>
 </resources>

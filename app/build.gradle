@@ -46,10 +46,11 @@ android {
             matchingFallbacks = ['release', 'debug']
         }
         xbank {
+            applicationIdSuffix ".xbank"
             resValue("string", "web_host", "\"${WEB_URL_XBANK}\"")
-            minifyEnabled false
+//            minifyEnabled false
             signingConfig signingConfigs.xbank
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             matchingFallbacks = ['release', 'debug']
         }
     }
