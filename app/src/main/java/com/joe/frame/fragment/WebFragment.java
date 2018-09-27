@@ -114,7 +114,6 @@ public class WebFragment extends BasePermissionFragment {
     private void saveBitmap(Bitmap bitmap) {
         try {
 //            Bitmap bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri));
-//            Bitmap bitmap = decodeSampledBitmapFromPath(uri.getPath(), 720, 1280);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             int options = 80;
             bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);
