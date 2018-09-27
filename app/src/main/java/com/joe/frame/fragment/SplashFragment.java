@@ -1,5 +1,6 @@
 package com.joe.frame.fragment;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -12,7 +13,7 @@ import com.joe.base.Navigator;
 import com.joe.frame.BuildConfig;
 import com.joe.frame.R;
 
-public class SplashFragment extends BaseFragment{
+public class SplashFragment extends BasePermissionFragment{
     private Handler mHandler = new Handler();
 
     private void handleNormalSplashAction() {
@@ -42,6 +43,13 @@ public class SplashFragment extends BaseFragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
+
+    }
+
+    @Override
+    protected void onGranted() {
+        super.onGranted();
         handleNormalSplashAction();
     }
 

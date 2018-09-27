@@ -77,6 +77,16 @@ public class WebFragment extends BasePermissionFragment {
         }
         if (requestCode == REQUEST_FILE_CHOOSER && this.mUploadMessageAbL != null) {
             Uri localUri = null;
+
+            if(data != null){
+                localUri = data.getData();
+                try {
+                    String path = getRealFilePath(getActivity(),localUri);
+                    saveImage(path);
+                } catch (Exception e) {
+
+                }
+            }else
             if (!TextUtils.isEmpty(mCameraFilePath)) {
                 File cameraFile = new File(mCameraFilePath);
                 localUri = FileProvider.getUriForFile(getActivity(),BuildConfig.APPLICATION_ID+".fileprovider",cameraFile);
@@ -198,17 +208,17 @@ public class WebFragment extends BasePermissionFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (Build.VERSION.SDK_INT >= 23) {
-            int REQUEST_CODE_CONTACT = 101;
-            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};            //验证是否许可权限
-            for (String str : permissions) {
-                if (this.getActivity().checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
-                    //申请权限
-                    this.requestPermissions(permissions, REQUEST_CODE_CONTACT);
-                    return;
-                }
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= 23) {
+//            int REQUEST_CODE_CONTACT = 101;
+//            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};            //验证是否许可权限
+//            for (String str : permissions) {
+//                if (this.getActivity().checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
+//                    //申请权限
+//                    this.requestPermissions(permissions, REQUEST_CODE_CONTACT);
+//                    return;
+//                }
+//            }
+//        }
 
         String url = getArguments().getString("url");
         String title = getArguments().getString("title", "");
@@ -323,7 +333,7 @@ public class WebFragment extends BasePermissionFragment {
 
 
         mCameraFilePath = cameraFilePath;
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
+//        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
         return cameraIntent;
     }
 
