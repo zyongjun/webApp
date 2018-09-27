@@ -44,6 +44,7 @@ android {
             resValue("string", "web_host", "\"${WEB_URL_ACS}\"")
             signingConfig signingConfigs.acs
             matchingFallbacks = ['release', 'debug']
+            debuggable true
         }
         xbank {
             applicationIdSuffix ".xbank"

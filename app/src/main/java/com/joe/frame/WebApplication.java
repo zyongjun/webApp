@@ -1,6 +1,7 @@
 package com.joe.frame;
 
 import android.app.Application;
+import android.os.StrictMode;
 import android.util.DisplayMetrics;
 
 public class WebApplication extends Application{
@@ -16,6 +17,8 @@ public class WebApplication extends Application{
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
+        StrictMode.VmPolicy.Builder strictBuilder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(strictBuilder.build());
     }
 
     public DisplayMetrics getDisplayMetrics() {
