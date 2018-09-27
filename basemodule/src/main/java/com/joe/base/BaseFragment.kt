@@ -18,7 +18,7 @@ open  class BaseFragment:Fragment(){
         return mRootView
     }
 
-    open fun Fragment.onBackPressed():Boolean{
+    open fun onBackPressed():Boolean{
         activity?.finish()
         return true
     }
@@ -27,9 +27,4 @@ open  class BaseFragment:Fragment(){
         return -1
     }
 
-}
-
-fun Fragment.onBackPressed():Boolean{
-    activity?.finish()
-    return true
 }

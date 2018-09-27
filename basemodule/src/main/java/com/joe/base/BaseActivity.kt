@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.Window
 import android.view.WindowManager
+import com.joe.base.extension.loge
 
 open  class BaseActivity:AppCompatActivity(){
 
@@ -47,11 +48,15 @@ open  class BaseActivity:AppCompatActivity(){
     override fun onBackPressed() {
         val fragments = supportFragmentManager.fragments
         if (fragments != null && fragments.size > 0) {
-            if (!fragments[0].onBackPressed()) {
-                super.onBackPressed()
+            if (fragments[0] is BaseFragment ){
+                val fragment:BaseFragment = fragments[0] as BaseFragment
+                if(!fragment.onBackPressed()){
+                    super.onBackPressed()
+                }
             }
+        }else {
+            super.onBackPressed()
         }
-        super.onBackPressed()
     }
 
 }
