@@ -30,7 +30,7 @@ public class SplashFragment extends BasePermissionFragment{
 
     private void navigateToLoginPage() {
         Bundle bundle = new Bundle();
-        bundle.putString("url","http://www.superace.net");
+        bundle.putString("url",getString(R.string.web_host));
         Navigator.INSTANCE.startCommon(getActivity(),WebFragment.class.getName(),bundle,-1);
         getActivity().finish();
     }
@@ -44,7 +44,6 @@ public class SplashFragment extends BasePermissionFragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         checkPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
-
     }
 
     @Override
