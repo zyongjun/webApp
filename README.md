@@ -1,2 +1,2 @@
-# ComponentFrame
-An Android Framework with kotlin, help to build an app in an easy way.
+多渠道acsToken和xbank
+assemble命令可以一次打好两个包
